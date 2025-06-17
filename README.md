@@ -20,7 +20,7 @@ It is worth noting that there is a try/catch structure in case of exceptions, wh
 ###### index.html
 
 This is the web page itself, whose visuals were mostly made using Bootstrap — with the exception of the loading animation, which I got from <a href="https://www.w3schools.com/howto/howto_css_loader.asp" target="_blank">W3 Schools</a>.
-The "logo" for the project was made using Canva, and the options for the video are a <form> tag which is submitted upon clicking the blue "Generate" button, activating the generateVidRequest(event) function in main.js.
+The "logo" for the project was made using Canva, and the options for the video are a `<form>` tag which is submitted upon clicking the blue "Generate" button, activating the generateVidRequest(event) function in main.js.
 
 ###### main.js
 
