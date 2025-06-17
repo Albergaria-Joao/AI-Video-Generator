@@ -19,8 +19,6 @@ client = OpenAI(
   api_key=os.getenv("API_KEY"),
 )
 
-SEARCH_ID = os.getenv("SEARCH_ID")
-
 def generate_script(subject, duration):
     generated = False
     while generated == False:
