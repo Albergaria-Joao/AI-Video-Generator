@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Short video generator</title>
+
+        <script type="text/javascript" src="../static/js/main.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+          /* From W3 Schools https://www.w3schools.com/howto/howto_css_loader.asp */
+          .loader {
+            border: 10px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 10px solid #0d6efd;
+            width: 60px;
+            height: 60px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+          }
+
+          /* Safari */
+          @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style> 
+    </head>
+    <body>
+        <div id="container-github" style="position: fixed; margin-left: 20px; margin-top: 90vh;">
+            <p class="form-text">Created as the final project for CS50x by <a href="https://github.com/Albergaria-Joao" target="_blank"><img src="../static/img/github-color.svg" alt="Logo" width="20" height="20"> João Albergaria </a></p>
+        </div>
+        <div class="px-4 py-5 my-5 text-center">
+            <img class="d-block mx-auto mb-4" src="../static/img/logo.png" alt="Logo" width="132" height="132">
+            <h1 class="display-5 fw-bold text-body-emphasis">AI-powered short video generator</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-4">Just type in your subject and wait for the video to generate. Simple as that.</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <form onsubmit="generateVidRequest(event)" style="justify-content: center;">
+                    <div class="mb-3">
+                      <label for="subject" class="form-label">Video subject:</label>
+                      <input type="text" class="form-control" id="vid-subject" aria-describedby="emailHelp" wfd-id="id0" required>
+                      <div id="emailHelp" class="form-text">Example: "Curious fact about Batman"</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="length" class="form-label">Video length (in seconds)</label>
+                      <div style="display: inline">
+                        <input type="range" class="form-range" min="15" max="60" step="5" id="vid-length" wfd-id="id7" oninput="updateLength()">
+                        <label for="length" class="form-label" id="length-label">40</label>
+                      </div>
+                    </div>
+                    <div class="mb-3" style="display: flex; justify-content: center;">
+                      <label for="length" class="form-label" style="margin-top:.5rem">Video size: </label>
+                      <div style="display: inline; margin-left: 1vw">
+                        <select name="sizes" id="size-select" class="form-select" required >
+                          <optgroup label="16:9">
+                            <option value="1920-1080">1920x1080 px</option>
+                          </optgroup>
+                          <optgroup label="9:16">
+                            <option value="1080-1920">1080x1920 px</option>
+                          </optgroup>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-3 form-check" style="width: fit-content; margin: auto">
+                        <input type="checkbox" class="form-check-input" id="sub-check" wfd-id="id2">
+                        <label class="form-check-label" for="exampleCheck1" id="sub-check-label">Subtitles</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" id="gen-button" style="margin-top:2vh">Generate</button>
+                </form>
+              </div>
+              <div id="container-vid" style="margin-top: 4vh; display: flex; justify-content: center;">
+              </div>
+              <p class="form-text" style="margin-top:2vh">Made using the Deepseek R1 model (free) and MoviePy</p>  
+            </div>
+          </div>
+          
+    </body>
+</html>
