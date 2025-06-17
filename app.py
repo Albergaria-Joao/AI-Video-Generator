@@ -6,17 +6,12 @@ from scriptgen import generate_script, generate_queries, get_img_crawler, assemb
 app = Flask("__name__")
 app.secret_key = os.getenv("APP_KEY")
 
-
-tokens = True
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
 @app.route("/generating-vid", methods=["POST"])
-def generate_vid():
-    global tokens
-    
+def generate_vid(): 
     try:
         subject = request.json.get('vid_subject', 'Subject not provided')
         length = request.json.get('vid_length', 'Length not provided')
